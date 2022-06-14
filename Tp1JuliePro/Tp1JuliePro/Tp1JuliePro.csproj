@@ -9,4 +9,9 @@
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="5.0.4" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Tp1JuliePro_DataAccess\Tp1JuliePro_DataAccess.csproj" />
+    <ProjectReference Include="..\Tp1JuliePro_Models\Tp1JuliePro_Models.csproj" />
+  </ItemGroup>
+
 </Project>

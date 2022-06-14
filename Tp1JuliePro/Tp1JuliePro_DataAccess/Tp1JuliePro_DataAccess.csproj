@@ -4,4 +4,8 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Tp1JuliePro_Models\Tp1JuliePro_Models.csproj" />
+  </ItemGroup>
+
 </Project>
