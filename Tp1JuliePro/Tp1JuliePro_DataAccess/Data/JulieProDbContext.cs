@@ -13,8 +13,8 @@ namespace Tp1JuliePro_DataAccess.Data
         public JulieProDbContext(DbContextOptions<JulieProDbContext> options) : base(options)
         {
         }
-        /*
-        public virtual DbSet<Movie> Movies { get; set; }
+        
+        //public virtual DbSet<Movie> Movies { get; set; 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -25,6 +25,6 @@ namespace Tp1JuliePro_DataAccess.Data
 
             modelBuilder.GenerateData();
         }
-        */
+
     }
 }
