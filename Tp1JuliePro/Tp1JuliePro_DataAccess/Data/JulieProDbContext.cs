@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Tp1JuliePro_Models;
 
 namespace Tp1JuliePro_DataAccess.Data
 {
@@ -14,10 +15,12 @@ namespace Tp1JuliePro_DataAccess.Data
         {
         }
         
-        //public virtual DbSet<Movie> Movies { get; set; 
+        public virtual DbSet<Speciality> Speciality { get; set; }
+        public virtual DbSet<Trainer> Trainer { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
             base.OnModelCreating(modelBuilder);
 
             if (modelBuilder == null)
