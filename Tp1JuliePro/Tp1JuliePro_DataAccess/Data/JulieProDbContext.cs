@@ -36,6 +36,5 @@ namespace Tp1JuliePro_DataAccess.Data
 
             modelBuilder.GenerateData();
         }
-
     }
 }
