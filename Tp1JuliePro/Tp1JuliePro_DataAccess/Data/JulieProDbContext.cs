@@ -17,6 +17,8 @@ namespace Tp1JuliePro_DataAccess.Data
         
         public virtual DbSet<Speciality> Speciality { get; set; }
         public virtual DbSet<Trainer> Trainer { get; set; }
+        public virtual DbSet<Objective> Objective { get; set; }
+        public virtual DbSet<Customer> Customer { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

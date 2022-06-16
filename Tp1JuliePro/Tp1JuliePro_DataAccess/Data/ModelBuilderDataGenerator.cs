@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System;
 using Tp1JuliePro_Models;
 
 namespace Tp1JuliePro_DataAccess.Data
@@ -25,18 +26,18 @@ namespace Tp1JuliePro_DataAccess.Data
                 #endregion
 
                 #region Données pour Customer
-                //builder.Entity<Customer>().HasData(new Customer() { Id = 1, FirstName = "Arthur", LastName = "Laroche", Email = "arthurLaroche@gmail.com", BirthDate = new DateTime(1965, 10, 04, 00, 00, 00), Photo = "", Trainer_Id = 3 });
-                //builder.Entity<Customer>().HasData(new Customer() { Id = 2, FirstName = "Délima", LastName = "Caillou", Email = "DelimaCaillou@gmail.com", BirthDate = new DateTime(1965, 10, 04, 00, 00, 00), Photo = "", Trainer_Id = 2 });
-                //builder.Entity<Customer>().HasData(new Customer() { Id = 3, FirstName = "Fred", LastName = "Caillou", Email = "fredcaillou@gmail.com", BirthDate = new DateTime(1965, 10, 04, 00, 00, 00), Photo = "", Trainer_Id = 3 });
-                //builder.Entity<Customer>().HasData(new Customer() { Id = 4, FirstName = "Bertha", LastName = "Laroche", Email = "berthaLaroche@gmail.com", BirthDate = new DateTime(1965, 10, 04, 00, 00, 00), Photo = "", Trainer_Id = 1 });
+                builder.Entity<Customer>().HasData(new Customer() { Id = 1, FirstName = "Arthur", LastName = "Laroche", Email = "arthurLaroche@gmail.com", BirthDate = new DateTime(1965, 10, 04, 00, 00, 00), Photo = "", TrainerId = 3 });
+                builder.Entity<Customer>().HasData(new Customer() { Id = 2, FirstName = "Délima", LastName = "Caillou", Email = "DelimaCaillou@gmail.com", BirthDate = new DateTime(1965, 10, 04, 00, 00, 00), Photo = "", TrainerId = 2 });
+                builder.Entity<Customer>().HasData(new Customer() { Id = 3, FirstName = "Fred", LastName = "Caillou", Email = "fredcaillou@gmail.com", BirthDate = new DateTime(1965, 10, 04, 00, 00, 00), Photo = "", TrainerId = 3 });
+                builder.Entity<Customer>().HasData(new Customer() { Id = 4, FirstName = "Bertha", LastName = "Laroche", Email = "berthaLaroche@gmail.com", BirthDate = new DateTime(1965, 10, 04, 00, 00, 00), Photo = "", TrainerId = 1 });
                 #endregion
 
                 #region Données pour Objective
-                //builder.Entity<Objective>().HasData(new Objective() { Id = 1, Name = "", LostWeight = 5, DistanceKm = 0, AchievedDate = new DateTime(2021, 09, 01, 00, 00, 00), Customer_Id = 1 });
-                //builder.Entity<Objective>().HasData(new Objective() { Id = 2, Name = "", LostWeight = 5, DistanceKm = 0, AchievedDate = new DateTime(2021, 10, 01, 00, 00, 00), Customer_Id = 1 });
-                //builder.Entity<Objective>().HasData(new Objective() { Id = 3, Name = "", LostWeight = 5, DistanceKm = 0, Customer_Id = 1 });
-                //builder.Entity<Objective>().HasData(new Objective() { Id = 4, Name = "", LostWeight = 10, DistanceKm = 0, AchievedDate = new DateTime(2022, 05, 11, 00, 00, 00), Customer_Id = 2 });
-                //builder.Entity<Objective>().HasData(new Objective() { Id = 5, Name = "", LostWeight = 5, DistanceKm = 0, Customer_Id = 2 });
+                builder.Entity<Objective>().HasData(new Objective() { Id = 1, Name = "", LostWeight = 5, DistanceKm = 0, AchievedDate = new DateTime(2021, 09, 01, 00, 00, 00), CustomerId = 1 });
+                builder.Entity<Objective>().HasData(new Objective() { Id = 2, Name = "", LostWeight = 5, DistanceKm = 0, AchievedDate = new DateTime(2021, 10, 01, 00, 00, 00), CustomerId = 1 });
+                builder.Entity<Objective>().HasData(new Objective() { Id = 3, Name = "", LostWeight = 5, DistanceKm = 0, CustomerId = 1 });
+                builder.Entity<Objective>().HasData(new Objective() { Id = 4, Name = "", LostWeight = 10, DistanceKm = 0, AchievedDate = new DateTime(2022, 05, 11, 00, 00, 00), CustomerId = 2 });
+                builder.Entity<Objective>().HasData(new Objective() { Id = 5, Name = "", LostWeight = 5, DistanceKm = 0, CustomerId = 2 });
 
                 #endregion
 

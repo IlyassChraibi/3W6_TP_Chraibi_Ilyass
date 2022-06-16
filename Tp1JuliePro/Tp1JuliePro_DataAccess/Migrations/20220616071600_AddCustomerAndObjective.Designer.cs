@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Tp1JuliePro_DataAccess.Data;
 
 namespace Tp1JuliePro_DataAccess.Migrations
 {
     [DbContext(typeof(JulieProDbContext))]
-    partial class JulieProDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220616071600_AddCustomerAndObjective")]
+    partial class AddCustomerAndObjective
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
