@@ -1,4 +1,5 @@
-﻿using System;
+﻿using JuliePro_Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -42,6 +43,6 @@ namespace Tp1JuliePro_Models
         public int TrainerId { get; set; }
         public virtual Trainer Trainer { get; set; }
 
-        //public virtual ICollection<ScheduledSession> Sessions { get; set; }
+        public virtual ICollection<ScheduledSession> Sessions { get; set; }
     }
 }

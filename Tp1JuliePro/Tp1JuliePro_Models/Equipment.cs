@@ -1,4 +1,5 @@
-﻿using System;
+﻿using JuliePro_Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -17,6 +18,6 @@ namespace Tp1JuliePro_Models
         [MaxLength(150, ErrorMessage = "MaxLengthValidation")]
         public string Name { get; set; }
 
-        //public virtual ICollection<EquipmentTraining> EquipmentTrainings { get; set; }
+        public virtual ICollection<EquipmentTraining> EquipmentTrainings { get; set; }
     }
 }
