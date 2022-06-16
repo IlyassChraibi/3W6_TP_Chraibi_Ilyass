@@ -42,24 +42,24 @@ namespace Tp1JuliePro_DataAccess.Data
                 #endregion
 
                 #region Données pour Training
-                //builder.Entity<Training>().HasData(new Training() { Id = 1, Name = "Step", Category = "Cardio" });
-                //builder.Entity<Training>().HasData(new Training() { Id = 2, Name = "Yoga", Category = "Étirement" });
-                //builder.Entity<Training>().HasData(new Training() { Id = 3, Name = "CrossFit", Category = "Musculaire" });
-                //builder.Entity<Training>().HasData(new Training() { Id = 4, Name = "Course", Category = "Cardio" });
-                //builder.Entity<Training>().HasData(new Training() { Id = 5, Name = "Zumba", Category = "Cardio" });
-                //builder.Entity<Training>().HasData(new Training() { Id = 6, Name = "Spinning", Category = "Musculaire" });
-                //builder.Entity<Training>().HasData(new Training() { Id = 7, Name = "Taichi", Category = "Étirement" });
+                builder.Entity<Training>().HasData(new Training() { Id = 1, Name = "Step", Category = "Cardio" });
+                builder.Entity<Training>().HasData(new Training() { Id = 2, Name = "Yoga", Category = "Étirement" });
+                builder.Entity<Training>().HasData(new Training() { Id = 3, Name = "CrossFit", Category = "Musculaire" });
+                builder.Entity<Training>().HasData(new Training() { Id = 4, Name = "Course", Category = "Cardio" });
+                builder.Entity<Training>().HasData(new Training() { Id = 5, Name = "Zumba", Category = "Cardio" });
+                builder.Entity<Training>().HasData(new Training() { Id = 6, Name = "Spinning", Category = "Musculaire" });
+                builder.Entity<Training>().HasData(new Training() { Id = 7, Name = "Taichi", Category = "Étirement" });
                 #endregion
 
                 #region Données pour Equipment
-                //builder.Entity<Equipment>().HasData(new Equipment() { Id = 1, @Name = "Vélo" });
-                //builder.Entity<Equipment>().HasData(new Equipment() { Id = 2, @Name = "Ensemble dumbels" });
-                //builder.Entity<Equipment>().HasData(new Equipment() { Id = 3, @Name = "Tapis" });
-                //builder.Entity<Equipment>().HasData(new Equipment() { Id = 4, @Name = "Step" });
-                //builder.Entity<Equipment>().HasData(new Equipment() { Id = 5, @Name = "Ensemble barre altère" });
-                //builder.Entity<Equipment>().HasData(new Equipment() { Id = 6, @Name = "Bloc yoga" });
-                //builder.Entity<Equipment>().HasData(new Equipment() { Id = 7, @Name = "Elastiques" });
-                //builder.Entity<Equipment>().HasData(new Equipment() { Id = 8, @Name = "Ballon d'exercice" });
+                builder.Entity<Equipment>().HasData(new Equipment() { Id = 1, @Name = "Vélo" });
+                builder.Entity<Equipment>().HasData(new Equipment() { Id = 2, @Name = "Ensemble dumbels" });
+                builder.Entity<Equipment>().HasData(new Equipment() { Id = 3, @Name = "Tapis" });
+                builder.Entity<Equipment>().HasData(new Equipment() { Id = 4, @Name = "Step" });
+                builder.Entity<Equipment>().HasData(new Equipment() { Id = 5, @Name = "Ensemble barre altère" });
+                builder.Entity<Equipment>().HasData(new Equipment() { Id = 6, @Name = "Bloc yoga" });
+                builder.Entity<Equipment>().HasData(new Equipment() { Id = 7, @Name = "Elastiques" });
+                builder.Entity<Equipment>().HasData(new Equipment() { Id = 8, @Name = "Ballon d'exercice" });
                 #endregion
             }
     }

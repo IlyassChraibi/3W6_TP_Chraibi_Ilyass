@@ -3,36 +3,23 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Tp1JuliePro_DataAccess.Data;
 
 namespace Tp1JuliePro_DataAccess.Migrations
 {
     [DbContext(typeof(JulieProDbContext))]
-    partial class JulieProDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220616072256_AddCustomerAndObjective2")]
+    partial class AddCustomerAndObjective2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.10")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-            modelBuilder.Entity("JuliePro_Models.EquipmentTraining", b =>
-                {
-                    b.Property<int>("EquipmentId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("TrainingId")
-                        .HasColumnType("int");
-
-                    b.HasKey("EquipmentId", "TrainingId");
-
-                    b.HasIndex("TrainingId");
-
-                    b.ToTable("EquipmentTrainings");
-                });
 
             modelBuilder.Entity("Tp1JuliePro_Models.Customer", b =>
                 {
@@ -119,65 +106,6 @@ namespace Tp1JuliePro_DataAccess.Migrations
                             LastName = "Laroche",
                             Photo = "",
                             TrainerId = 1
-                        });
-                });
-
-            modelBuilder.Entity("Tp1JuliePro_Models.Equipment", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(150)
-                        .HasColumnType("nvarchar(150)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Equipment");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Name = "Vélo"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Name = "Ensemble dumbels"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Name = "Tapis"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Name = "Step"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Name = "Ensemble barre altère"
-                        },
-                        new
-                        {
-                            Id = 6,
-                            Name = "Bloc yoga"
-                        },
-                        new
-                        {
-                            Id = 7,
-                            Name = "Elastiques"
-                        },
-                        new
-                        {
-                            Id = 8,
-                            Name = "Ballon d'exercice"
                         });
                 });
 
@@ -406,91 +334,6 @@ namespace Tp1JuliePro_DataAccess.Migrations
                             Photo = "waqd9532-1395-42a2-8ae6-56f0e2ab49e9.png",
                             Speciality_Id = 3
                         });
-                });
-
-            modelBuilder.Entity("Tp1JuliePro_Models.Training", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Category")
-                        .IsRequired()
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Training");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Category = "Cardio",
-                            Name = "Step"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Category = "Étirement",
-                            Name = "Yoga"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Category = "Musculaire",
-                            Name = "CrossFit"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Category = "Cardio",
-                            Name = "Course"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Category = "Cardio",
-                            Name = "Zumba"
-                        },
-                        new
-                        {
-                            Id = 6,
-                            Category = "Musculaire",
-                            Name = "Spinning"
-                        },
-                        new
-                        {
-                            Id = 7,
-                            Category = "Étirement",
-                            Name = "Taichi"
-                        });
-                });
-
-            modelBuilder.Entity("JuliePro_Models.EquipmentTraining", b =>
-                {
-                    b.HasOne("Tp1JuliePro_Models.Equipment", "Equipment")
-                        .WithMany()
-                        .HasForeignKey("EquipmentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Tp1JuliePro_Models.Training", "Training")
-                        .WithMany()
-                        .HasForeignKey("TrainingId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Equipment");
-
-                    b.Navigation("Training");
                 });
 
             modelBuilder.Entity("Tp1JuliePro_Models.Customer", b =>

@@ -42,6 +42,6 @@ namespace Tp1JuliePro_Models
         public int TrainerId { get; set; }
         public virtual Trainer Trainer { get; set; }
 
-        //public virtual ICollection<ScheduledSession> ScheduledSessions { get; set; }
+        //public virtual ICollection<ScheduledSession> Sessions { get; set; }
     }
 }

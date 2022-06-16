@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Tp1JuliePro_DataAccess.Data;
 
 namespace Tp1JuliePro_DataAccess.Migrations
 {
     [DbContext(typeof(JulieProDbContext))]
-    partial class JulieProDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220616073936_AddEquipmentTraining")]
+    partial class AddEquipmentTraining
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -137,48 +139,6 @@ namespace Tp1JuliePro_DataAccess.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Equipment");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Name = "Vélo"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Name = "Ensemble dumbels"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Name = "Tapis"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Name = "Step"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Name = "Ensemble barre altère"
-                        },
-                        new
-                        {
-                            Id = 6,
-                            Name = "Bloc yoga"
-                        },
-                        new
-                        {
-                            Id = 7,
-                            Name = "Elastiques"
-                        },
-                        new
-                        {
-                            Id = 8,
-                            Name = "Ballon d'exercice"
-                        });
                 });
 
             modelBuilder.Entity("Tp1JuliePro_Models.Objective", b =>
@@ -428,50 +388,6 @@ namespace Tp1JuliePro_DataAccess.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Training");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Category = "Cardio",
-                            Name = "Step"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Category = "Étirement",
-                            Name = "Yoga"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Category = "Musculaire",
-                            Name = "CrossFit"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Category = "Cardio",
-                            Name = "Course"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Category = "Cardio",
-                            Name = "Zumba"
-                        },
-                        new
-                        {
-                            Id = 6,
-                            Category = "Musculaire",
-                            Name = "Spinning"
-                        },
-                        new
-                        {
-                            Id = 7,
-                            Category = "Étirement",
-                            Name = "Taichi"
-                        });
                 });
 
             modelBuilder.Entity("JuliePro_Models.EquipmentTraining", b =>
