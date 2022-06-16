@@ -1,0 +1,66 @@
+﻿@using Tp1JuliePro_Models;
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@{ Layout = "~/Views/Shared/_Layout.cshtml"; }
+@model IEnumerable<Trainer>
+
+<br />
+<br />
+<div class="border p-4 bg-white">
+    <div class="row">
+        <div class="col-8">
+            <h2 class="text-info">The trainers</h2>
+        </div>
+        <div class=" col-2 text-right">
+            <a asp-action="Create" class="btn btn-info form-control"> Add a trainer </a>
+        </div>
+    </div>
+    <br />
+    <div>
+
+
+        <table class="table table-striped border">
+            <tr class="table-secondary">
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Speciality</th>
+                <th></th>
+            </tr>
+            @*Début de la liste *@
+            @foreach (Trainer trainer in Model)
+            {
+                <tr>
+                    <td>
+                        @trainer.FirstName
+                    </td>
+                    <td>
+                        @trainer.LastName
+                    </td>
+                    <td>
+                        @trainer.Email
+                    </td>
+                    <td>
+                        @*trainer.Speciality.Name*@ SPECIALITY
+                    </td>
+                    <td>
+                        <a class="btn btn-primary text-white" asp-action="Edit" asp-route-Id="@trainer.Id">
+                            Edit
+                        </a>
+                        <a class="btn btn-info text-white" asp-action="Details" asp-route-Id="@trainer.Id">
+                            Details
+                        </a>
+                        <a class="btn btn-danger text-white" asp-action="Delete" asp-route-Id="@trainer.Id">
+                            Delete
+                        </a>
+
+                    </td>
+                </tr>
+            }
+            @*Fin de la liste *@
+        </table>
+    </div>
+</div>

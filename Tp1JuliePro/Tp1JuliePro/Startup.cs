@@ -26,7 +26,6 @@ namespace Tp1JuliePro
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<JulieProDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-
             services.AddControllersWithViews();
         }
 
