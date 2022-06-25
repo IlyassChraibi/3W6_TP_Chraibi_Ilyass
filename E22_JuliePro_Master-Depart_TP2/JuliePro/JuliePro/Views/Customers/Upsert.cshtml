@@ -1,0 +1,73 @@
+﻿@using System.Reflection
+@using JuliePro_Models
+@using JuliePro_Models.ViewModels
+@model CustomersUpsertVM
+@{
+ViewData["Title"] = "@Model.GeneralViewInfos.PageTitle";
+}
+
+<div class="row justify-content-center view-upsert">
+    <div class="col-8">
+        <div class="h1 text-primary mb-4">@Model.GeneralViewInfos.PageHeading</div>
+        <div class="hstack gap-4 mb-2 page-actions">
+            @foreach (PageLinkInfos pli in Model.GeneralViewInfos.Links)
+            {
+                @if (pli.UsesId)
+                {
+                    ViewData["Id"] = Model.Id;
+                    <partial name="_PageLinkWithId" model="pli" view-data="ViewData" />
+                }
+                else
+                {
+                    <partial name="_PageLink" model="pli" />
+                }
+            }
+        </div>
+        <form asp-action="Upsert">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="IsCreate" />
+            <input type="hidden" asp-for="Customer.Id" />
+            <div class="form-floating mb-3">
+                <input asp-for="Customer.FirstName" class="form-control" id="FirstName" placeholder="@Html.DisplayNameFor(model => model.Customer.FirstName)" />
+                <label for="FirstName" asp-for="Customer.FirstName"></label>
+                <span asp-validation-for="Customer.FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Customer.LastName" class="form-control" id="LastName" placeholder="@Html.DisplayNameFor(model => model.Customer.LastName)" />
+                <label for="LastName" asp-for="Customer.LastName"></label>
+                <span asp-validation-for="Customer.LastName" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Customer.Email" class="form-control" id="Email" placeholder="@Html.DisplayNameFor(model => model.Customer.Email)" />
+                <label for="Email" asp-for="Customer.Email"></label>
+                <span asp-validation-for="Customer.Email" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Customer.Photo" class="form-control" id="Photo" placeholder="@Html.DisplayNameFor(model => model.Customer.Photo)" />
+                <label for="Photo" asp-for="Customer.Photo"></label>
+                <span asp-validation-for="Customer.Photo" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Customer.BirthDate" class="form-control" id="BirthDate" placeholder="@Html.DisplayNameFor(model => model.Customer.BirthDate)" />
+                <label for="BirthDate" asp-for="Customer.BirthDate"></label>
+                <span asp-validation-for="Customer.BirthDate" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Customer.StartWeight" class="form-control" id="StartWeight" placeholder="@Html.DisplayNameFor(model => model.Customer.StartWeight)" />
+                <label for="StartWeight" asp-for="Customer.StartWeight"></label>
+                <span asp-validation-for="Customer.StartWeight" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <select asp-for="Customer.Trainer_Id" class="form-select" placeholder="@Html.DisplayNameFor(model => model.Customer.Trainer_Id)" asp-items="Model.ListForTrainer_Id"></select>
+                <label asp-for="Customer.Trainer_Id"></label>
+                <span asp-validation-for="Customer.Trainer_Id" class="text-danger"></span>
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary">@Model.GeneralViewInfos.SubmitButtonText</button>
+            </div>
+        </form>
+    </div>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
