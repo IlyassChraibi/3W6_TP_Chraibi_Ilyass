@@ -23,7 +23,7 @@ namespace JuliePro_Models.ViewModels
         public TrainersUpsertVM(bool isCreate, string pageTitle, string pageHeading, List<PageLinks> links, string submitButtonText, Dictionary<string,
             SelectList­> selectLists, Trainer trainer) : this(isCreate, pageTitle, pageHeading, links, submitButtonText, selectLists)
         {
-            Trainer = Trainer;
+            Trainer = trainer;
             Id = trainer?.Id;
         }
         public bool IsCreate { get; set; }
