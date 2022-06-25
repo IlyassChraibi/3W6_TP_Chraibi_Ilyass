@@ -1,0 +1,78 @@
+﻿@using System.Reflection
+@using JuliePro_Models
+@using JuliePro_Models.ViewModels
+@model TrainersDisplayVM
+@{
+ViewData["Title"] = "@Model.GeneralViewInfos.PageTitle";
+}
+
+<div class="row justify-content-center view-display">
+    <div class="col-8">
+        <div class="h1 text-primary mb-4">@Model.GeneralViewInfos.PageHeading</div>
+        <div class="hstack gap-4 mb-2 page-actions">
+            @foreach (PageLinkInfos pli in Model.GeneralViewInfos.Links)
+            {
+                @if (pli.UsesId)
+                {
+                    ViewData["Id"] = Model.Id;
+                    <partial name="_PageLinkWithId" model="pli" view-data="ViewData" />
+                }
+                else
+                {
+                    <partial name="_PageLink" model="pli" />
+                }
+            }
+        </div>
+        <div class="form-check mb-3">
+            <input asp-for="Trainer.Active" readonly class="form-check-input" id="Active" />
+            <label for="Active" class="form-check-label" asp-for="Trainer.Active"></label>
+        </div>
+        <div class="form-floating mb-3">
+            <input asp-for="Trainer.Biography" readonly class="form-control" id="Biography" placeholder="@Html.DisplayNameFor(model => model.Trainer.Biography)" />
+            <script>var ta = document.querySelector('#Biography'); ta.style.height = ta.scrollHeight + 2 + 'px';</script>
+            <label for="Biography" asp-for="Trainer.Biography"></label>
+            <span asp-validation-for="Trainer.Biography" class="text-danger"></span>
+        </div>
+        <div class="form-floating mb-3">
+            <input asp-for="Trainer.Email" readonly class="form-control" id="Email" placeholder="@Html.DisplayNameFor(model => model.Trainer.Email)" />
+            <script>var ta = document.querySelector('#Email'); ta.style.height = ta.scrollHeight + 2 + 'px';</script>
+            <label for="Email" asp-for="Trainer.Email"></label>
+            <span asp-validation-for="Trainer.Email" class="text-danger"></span>
+        </div>
+        <div class="form-floating mb-3">
+            <input asp-for="Trainer.FirstName" readonly class="form-control" id="FirstName" placeholder="@Html.DisplayNameFor(model => model.Trainer.FirstName)" />
+            <script>var ta = document.querySelector('#FirstName'); ta.style.height = ta.scrollHeight + 2 + 'px';</script>
+            <label for="FirstName" asp-for="Trainer.FirstName"></label>
+            <span asp-validation-for="Trainer.FirstName" class="text-danger"></span>
+        </div>
+        <div class="form-floating mb-3">
+            <input asp-for="Trainer.LastName" readonly class="form-control" id="LastName" placeholder="@Html.DisplayNameFor(model => model.Trainer.LastName)" />
+            <script>var ta = document.querySelector('#LastName'); ta.style.height = ta.scrollHeight + 2 + 'px';</script>
+            <label for="LastName" asp-for="Trainer.LastName"></label>
+            <span asp-validation-for="Trainer.LastName" class="text-danger"></span>
+        </div>
+        <div class="form-floating mb-3">
+            <input asp-for="Trainer.Photo" readonly class="form-control" id="Photo" placeholder="@Html.DisplayNameFor(model => model.Trainer.Photo)" />
+            <script>var ta = document.querySelector('#Photo'); ta.style.height = ta.scrollHeight + 2 + 'px';</script>
+            <label for="Photo" asp-for="Trainer.Photo"></label>
+            <span asp-validation-for="Trainer.Photo" class="text-danger"></span>
+        </div>
+        <div class="form-floating mb-3">
+            <input asp-for="Trainer.Speciality_Id" readonly class="form-control" id="Speciality_Id" placeholder="@Html.DisplayNameFor(model => model.Trainer.Speciality_Id)" />
+            <script>var ta = document.querySelector('#Speciality_Id'); ta.style.height = ta.scrollHeight + 2 + 'px';</script>
+            <label for="Speciality_Id" asp-for="Trainer.Speciality_Id"></label>
+            <span asp-validation-for="Trainer.Speciality_Id" class="text-danger"></span>
+        </div>
+        @if (!Model.IsDetails)
+        {
+        <form asp-action="Delete" method="post">
+            <input type="hidden" asp-for="Trainer.Id" />
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary">@Model.GeneralViewInfos.SubmitButtonText</button>
+            </div>
+        </form>
+        }
+    </div>
+</div>
+@section Scripts {
+}

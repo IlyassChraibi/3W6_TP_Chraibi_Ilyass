@@ -29,7 +29,7 @@ namespace JuliePro_Models
         [Display(Name = "Email")]
         [Required(ErrorMessage = "RequiredValidation")]
         [DataType(DataType.EmailAddress)]
-        [EmailAddress(ErrorMessage = "EmailTypeVerification")]
+        //[EmailAddress(ErrorMessage = "EmailTypeVerification")]
         public string Email { get; set; }
 
         [Display(Name = "Photo")]
