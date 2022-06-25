@@ -1,0 +1,73 @@
+﻿@using System.Reflection
+@using JuliePro_Models
+@using JuliePro_Models.ViewModels
+@using JuliePro_Utility
+@model TrainersUpsertVM
+@{
+ViewData["Title"] = "@Model.GeneralViewInfos.PageTitle";
+}
+
+<div class="row justify-content-center view-upsert">
+    <div class="col-8">
+        <div class="h1 text-primary mb-4">@Model.GeneralViewInfos.PageHeading</div>
+        <div class="hstack gap-4 mb-2 page-actions">
+            @foreach (PageLinkInfos pli in Model.GeneralViewInfos.Links)
+            {
+                @if (pli.UsesId)
+                {
+                    ViewData["Id"] = Model.Id;
+                    <partial name="_PageLinkWithId" model="pli" view-data="ViewData" />
+                }
+                else
+                {
+                    <partial name="_PageLink" model="pli" />
+                }
+            }
+        </div>
+        <form asp-action="Upsert">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="IsCreate" />
+            <input type="hidden" asp-for="Trainer.Id" />
+            <div class="form-floating mb-3">
+                <input asp-for="Trainer.FirstName" class="form-control" id="FirstName" placeholder="@Html.DisplayNameFor(model => model.Trainer.FirstName)" />
+                <label for="FirstName" asp-for="Trainer.FirstName"></label>
+                <span asp-validation-for="Trainer.FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Trainer.LastName" class="form-control" id="LastName" placeholder="@Html.DisplayNameFor(model => model.Trainer.LastName)" />
+                <label for="LastName" asp-for="Trainer.LastName"></label>
+                <span asp-validation-for="Trainer.LastName" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Trainer.Biography" class="form-control" id="Biography" placeholder="@Html.DisplayNameFor(model => model.Trainer.Biography)" />
+                <label for="Biography" asp-for="Trainer.Biography"></label>
+                <span asp-validation-for="Trainer.Biography" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Trainer.Email" class="form-control" id="Email" placeholder="@Html.DisplayNameFor(model => model.Trainer.Email)" />
+                <label for="Email" asp-for="Trainer.Email"></label>
+                <span asp-validation-for="Trainer.Email" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Trainer.Photo" class="form-control" id="Photo" placeholder="@Html.DisplayNameFor(model => model.Trainer.Photo)" />
+                <label for="Photo" asp-for="Trainer.Photo"></label>
+                <span asp-validation-for="Trainer.Photo" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <select asp-for="Trainer.Speciality_Id" class="form-select" placeholder="@Html.DisplayNameFor(model => model.Trainer.Speciality_Id)" asp-items="Model.ListForSpeciality_Id"></select>
+                <label asp-for="Trainer.Speciality_Id"></label>
+                <span asp-validation-for="Trainer.Speciality_Id" class="text-danger"></span>
+            </div>
+            <div class="form-check mb-3">
+                <input asp-for="Trainer.Active" class="form-check-input" id="Active" />
+                <label for="Active" class="form-check-label" asp-for="Trainer.Active"></label>
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary">@Model.GeneralViewInfos.SubmitButtonText</button>
+            </div>
+        </form>
+    </div>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

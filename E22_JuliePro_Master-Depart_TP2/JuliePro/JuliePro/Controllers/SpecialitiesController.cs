@@ -37,7 +37,7 @@ namespace JuliePro.Controllers
         }
 
         // GET: Specialities/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Display(int? id)
         {
             if (id == null)
             {
@@ -140,45 +140,45 @@ namespace JuliePro.Controllers
             );
         }
 
-        // GET: Specialities/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
+        //// GET: Specialities/Delete/5
+        //public async Task<IActionResult> Delete(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            Speciality speciality = await _db.Specialities
+        //    Speciality speciality = await _db.Specialities
                                                 
-                                                    .FirstOrDefaultAsync(e => e.Id == id);
-            if (speciality == null)
-            {
-                return NotFound();
-            }
+        //                                            .FirstOrDefaultAsync(e => e.Id == id);
+        //    if (speciality == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            return View(
-                    "Display",
-                    new SpecialitiesDisplayVM(
-                        false,
-                        "Speciality",
-                        "Are you sure you want to delete this Speciality",
-                        new List<PageLinks>() { PageLinks.BackToList },
-                        speciality,
-                        "Supprimer"
-                    )
-            );
-        }
+        //    return View(
+        //            "Display",
+        //            new SpecialitiesDisplayVM(
+        //                false,
+        //                "Speciality",
+        //                "Are you sure you want to delete this Speciality",
+        //                new List<PageLinks>() { PageLinks.BackToList },
+        //                speciality,
+        //                "Supprimer"
+        //            )
+        //    );
+        //}
 
-        // POST: Specialities/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            Speciality speciality = await _db.Specialities.FindAsync(id);
-            _db.Specialities.Remove(speciality);
-            await _db.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
+        //// POST: Specialities/Delete/5
+        //[HttpPost, ActionName("Delete")]
+        //[ValidateAntiForgeryToken]
+        //public async Task<IActionResult> DeleteConfirmed(int id)
+        //{
+        //    Speciality speciality = await _db.Specialities.FindAsync(id);
+        //    _db.Specialities.Remove(speciality);
+        //    await _db.SaveChangesAsync();
+        //    return RedirectToAction(nameof(Index));
+        //}
 
         private bool SpecialityExists(int id)
         {
