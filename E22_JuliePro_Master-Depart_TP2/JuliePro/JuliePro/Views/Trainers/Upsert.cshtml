@@ -24,7 +24,7 @@ ViewData["Title"] = "@Model.GeneralViewInfos.PageTitle";
                 }
             }
         </div>
-        <form asp-action="Upsert">
+        <form  enctype="multipart/form-data" asp-action="Upsert">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="IsCreate" />
             <input type="hidden" asp-for="Trainer.Id" />
@@ -48,8 +48,10 @@ ViewData["Title"] = "@Model.GeneralViewInfos.PageTitle";
                 <label for="Email" asp-for="Trainer.Email"></label>
                 <span asp-validation-for="Trainer.Email" class="text-danger"></span>
             </div>
+
+            
             <div class="form-floating mb-3">
-                <input asp-for="Trainer.Photo" class="form-control" id="Photo" placeholder="@Html.DisplayNameFor(model => model.Trainer.Photo)" />
+                <input type="file" class="form-control" id="uploadBox" name="files" multiple" />
                 <label for="Photo" asp-for="Trainer.Photo"></label>
                 <span asp-validation-for="Trainer.Photo" class="text-danger"></span>
             </div>

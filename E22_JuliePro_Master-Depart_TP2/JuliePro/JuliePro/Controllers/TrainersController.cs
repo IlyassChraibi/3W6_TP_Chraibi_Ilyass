@@ -110,15 +110,15 @@ namespace JuliePro.Controllers
 
             var files = HttpContext.Request.Form.Files; // nouvelle image récupérée
             string webRootPath = _webHostEnvironment.WebRootPath; //Chemin root des images de Trainers
+            string upload = webRootPath + "\\" + AppConstants.ImageTrainerPath;
+            string filename = Guid.NewGuid().ToString();
+            string extension = Path.GetExtension(files[0].FileName);
 
             if (ModelState.IsValid)
             {
                 if (vm.IsCreate)
                 {
-                    string upload = webRootPath + AppConstants.ImageTrainerPath;
-                    string filename = Guid.NewGuid().ToString();
-                    string extension = Path.GetExtension(files[0].FileName);
-                     
+                                   
                     using(var fileStream = new FileStream(Path.Combine(upload,filename+extension),FileMode.Create))
                     {
                         files[0].CopyTo(fileStream); 
@@ -130,13 +130,11 @@ namespace JuliePro.Controllers
                 {
                     try
                     {
-                        var objFromDb = _db.Trainers.FirstOrDefault(u => u.Id == vm.Trainer.Id);
+                        var objFromDb = _db.Trainers.AsNoTracking().FirstOrDefault(u => u.Id == vm.Trainer.Id);
 
                         if (files.Count > 0)
                         {
-                            string upload = webRootPath + AppConstants.ImageTrainerPath;
-                            string filename = Guid.NewGuid().ToString();
-                            string extension = Path.GetExtension(files[0].FileName);
+                            
 
                             if (objFromDb.Photo != null)
                             {
