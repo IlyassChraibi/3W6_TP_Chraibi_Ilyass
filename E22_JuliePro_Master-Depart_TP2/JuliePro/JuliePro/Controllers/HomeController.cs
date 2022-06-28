@@ -23,24 +23,42 @@ namespace JuliePro.Controllers
 
         private readonly IStringLocalizer<HomeController> _localizer;
 
+        //private readonly IStringLocalizer<SharedResource> _sharedResource;
+
         private readonly JulieProDbContext _db;
 
         public HomeController(ILogger<HomeController>
           logger, IStringLocalizer<HomeController> localizer)
         {
             _logger = logger;
-            
+            _localizer = localizer;
         }
 
         public IActionResult Index()
         {
-           
+            ViewData["Title"] = this._localizer["HomeIndexTitle"];
             return View();
         }
 
         public IActionResult Privacy()
         {
+            ViewBag.Title = _localizer["PrivacyTitle"];
             return View();
+        }
+
+        [HttpPost]
+        public IActionResult SetLanguage(string culture, string returnUrl)
+        {
+            var cookie = CookieRequestCultureProvider.MakeCookieValue(new RequestCulture(culture));
+            var name = CookieRequestCultureProvider.DefaultCookieName;
+
+            Response.Cookies.Append(name, cookie, new CookieOptions
+            {
+                Path = "/",
+                Expires = DateTimeOffset.UtcNow.AddYears(1),
+            }) ;
+            return LocalRedirect(returnUrl);
+
         }
     
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

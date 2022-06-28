@@ -21,4 +21,8 @@
     <ProjectReference Include="..\JuliePro_Utility\JuliePro_Utility.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Resources\" />
+  </ItemGroup>
+
 </Project>
