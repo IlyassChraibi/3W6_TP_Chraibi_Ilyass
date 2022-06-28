@@ -1,0 +1,86 @@
+﻿@using System.Reflection
+@using JuliePro_Models
+@using JuliePro_Models.ViewModels
+@model ScheduledSessionsDisplayVM
+@{
+ViewData["Title"] = "@Model.GeneralViewInfos.PageTitle";
+}
+
+<div class="row justify-content-center view-display">
+    <div class="col-8">
+        <div class="h1 text-primary mb-4">@Model.GeneralViewInfos.PageHeading</div>
+        <div class="hstack gap-4 mb-2 page-actions">
+            @foreach (PageLinkInfos pli in Model.GeneralViewInfos.Links)
+            {
+                @if (pli.UsesId)
+                {
+                    ViewData["Id"] = Model.Id;
+                    <partial name="_PageLinkWithId" model="pli" view-data="ViewData" />
+                }
+                else
+                {
+                    <partial name="_PageLink" model="pli" />
+                }
+            }
+        </div>
+        <div class="form-floating mb-3">
+            <input asp-for="ScheduledSession.Complete" readonly class="form-control" id="Complete" placeholder="@Html.DisplayNameFor(model => model.ScheduledSession.Complete)" />
+            <script>var ta = document.querySelector('#Complete'); ta.style.height = ta.scrollHeight + 2 + 'px';</script>
+            <label for="Complete" asp-for="ScheduledSession.Complete"></label>
+            <span asp-validation-for="ScheduledSession.Complete" class="text-danger"></span>
+        </div>
+        <div class="form-floating mb-3">
+            <input asp-for="ScheduledSession.Customer_Id" readonly class="form-control" id="Customer_Id" placeholder="@Html.DisplayNameFor(model => model.ScheduledSession.Customer_Id)" />
+            <script>var ta = document.querySelector('#Customer_Id'); ta.style.height = ta.scrollHeight + 2 + 'px';</script>
+            <label for="Customer_Id" asp-for="ScheduledSession.Customer_Id"></label>
+            <span asp-validation-for="ScheduledSession.Customer_Id" class="text-danger"></span>
+        </div>
+        <div class="form-floating mb-3">
+            <input asp-for="ScheduledSession.Date" readonly class="form-control" id="Date" placeholder="@Html.DisplayNameFor(model => model.ScheduledSession.Date)" />
+            <script>var ta = document.querySelector('#Date'); ta.style.height = ta.scrollHeight + 2 + 'px';</script>
+            <label for="Date" asp-for="ScheduledSession.Date"></label>
+            <span asp-validation-for="ScheduledSession.Date" class="text-danger"></span>
+        </div>
+        <div class="form-floating mb-3">
+            <input asp-for="ScheduledSession.Description" readonly class="form-control" id="Description" placeholder="@Html.DisplayNameFor(model => model.ScheduledSession.Description)" />
+            <script>var ta = document.querySelector('#Description'); ta.style.height = ta.scrollHeight + 2 + 'px';</script>
+            <label for="Description" asp-for="ScheduledSession.Description"></label>
+            <span asp-validation-for="ScheduledSession.Description" class="text-danger"></span>
+        </div>
+        <div class="form-floating mb-3">
+            <input asp-for="ScheduledSession.Detail" readonly class="form-control" id="Detail" placeholder="@Html.DisplayNameFor(model => model.ScheduledSession.Detail)" />
+            <script>var ta = document.querySelector('#Detail'); ta.style.height = ta.scrollHeight + 2 + 'px';</script>
+            <label for="Detail" asp-for="ScheduledSession.Detail"></label>
+            <span asp-validation-for="ScheduledSession.Detail" class="text-danger"></span>
+        </div>
+        <div class="form-floating mb-3">
+            <input asp-for="ScheduledSession.DurationMin" readonly class="form-control" id="DurationMin" placeholder="@Html.DisplayNameFor(model => model.ScheduledSession.DurationMin)" />
+            <script>var ta = document.querySelector('#DurationMin'); ta.style.height = ta.scrollHeight + 2 + 'px';</script>
+            <label for="DurationMin" asp-for="ScheduledSession.DurationMin"></label>
+            <span asp-validation-for="ScheduledSession.DurationMin" class="text-danger"></span>
+        </div>
+        <div class="form-floating mb-3">
+            <input asp-for="ScheduledSession.Training_Id" readonly class="form-control" id="Training_Id" placeholder="@Html.DisplayNameFor(model => model.ScheduledSession.Training_Id)" />
+            <script>var ta = document.querySelector('#Training_Id'); ta.style.height = ta.scrollHeight + 2 + 'px';</script>
+            <label for="Training_Id" asp-for="ScheduledSession.Training_Id"></label>
+            <span asp-validation-for="ScheduledSession.Training_Id" class="text-danger"></span>
+        </div>
+        <div class="form-floating mb-3">
+            <input asp-for="ScheduledSession.WithTrainer" readonly class="form-control" id="WithTrainer" placeholder="@Html.DisplayNameFor(model => model.ScheduledSession.WithTrainer)" />
+            <script>var ta = document.querySelector('#WithTrainer'); ta.style.height = ta.scrollHeight + 2 + 'px';</script>
+            <label for="WithTrainer" asp-for="ScheduledSession.WithTrainer"></label>
+            <span asp-validation-for="ScheduledSession.WithTrainer" class="text-danger"></span>
+        </div>
+        @if (!Model.IsDetails)
+        {
+        <form asp-action="Delete" method="post">
+            <input type="hidden" asp-for="ScheduledSession.Id" />
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary">@Model.GeneralViewInfos.SubmitButtonText</button>
+            </div>
+        </form>
+        }
+    </div>
+</div>
+@section Scripts {
+}

@@ -41,6 +41,10 @@ namespace JuliePro_Models
         [Range(100, 400, ErrorMessage = "StartWeightRangeValidation")]
         public double? StartWeight { get; set; }
 
+        [Display(Name = "MaxScheduledSession")]
+        [Range(100, 400, ErrorMessage = "MaxScheduledSessionRangeValidation")]
+        public int MaxScheduledSession { get; set; }
+
         public virtual ICollection<Objective> Objectives { get; set; }
 
         [ForeignKey("Trainer")]

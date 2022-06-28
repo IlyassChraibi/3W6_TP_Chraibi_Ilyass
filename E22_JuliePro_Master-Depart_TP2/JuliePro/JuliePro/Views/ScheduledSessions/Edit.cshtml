@@ -1,0 +1,78 @@
+﻿@using System.Reflection
+@using JuliePro_Models
+@using JuliePro_Models.ViewModels
+@model ScheduledSessionsUpsertVM
+@{
+ViewData["Title"] = "@Model.GeneralViewInfos.PageTitle";
+}
+
+<div class="row justify-content-center view-upsert">
+    <div class="col-8">
+        <div class="h1 text-primary mb-4">@Model.GeneralViewInfos.PageHeading</div>
+        <div class="hstack gap-4 mb-2 page-actions">
+            @foreach (PageLinkInfos pli in Model.GeneralViewInfos.Links)
+            {
+                @if (pli.UsesId)
+                {
+                    ViewData["Id"] = Model.Id;
+                    <partial name="_PageLinkWithId" model="pli" view-data="ViewData" />
+                }
+                else
+                {
+                    <partial name="_PageLink" model="pli" />
+                }
+            }
+        </div>
+        <form asp-action="Upsert">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="IsCreate" />
+            <input type="hidden" asp-for="ScheduledSession.Id" />
+            <div class="form-floating mb-3">
+                <input asp-for="ScheduledSession.Description" class="form-control" id="Description" placeholder="@Html.DisplayNameFor(model => model.ScheduledSession.Description)" />
+                <label for="Description" asp-for="ScheduledSession.Description"></label>
+                <span asp-validation-for="ScheduledSession.Description" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="ScheduledSession.Detail" class="form-control" id="Detail" placeholder="@Html.DisplayNameFor(model => model.ScheduledSession.Detail)" />
+                <label for="Detail" asp-for="ScheduledSession.Detail"></label>
+                <span asp-validation-for="ScheduledSession.Detail" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="ScheduledSession.Date" class="form-control" id="Date" placeholder="@Html.DisplayNameFor(model => model.ScheduledSession.Date)" />
+                <label for="Date" asp-for="ScheduledSession.Date"></label>
+                <span asp-validation-for="ScheduledSession.Date" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="ScheduledSession.DurationMin" class="form-control" id="DurationMin" placeholder="@Html.DisplayNameFor(model => model.ScheduledSession.DurationMin)" />
+                <label for="DurationMin" asp-for="ScheduledSession.DurationMin"></label>
+                <span asp-validation-for="ScheduledSession.DurationMin" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="ScheduledSession.WithTrainer" class="form-control" id="WithTrainer" placeholder="@Html.DisplayNameFor(model => model.ScheduledSession.WithTrainer)" />
+                <label for="WithTrainer" asp-for="ScheduledSession.WithTrainer"></label>
+                <span asp-validation-for="ScheduledSession.WithTrainer" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="ScheduledSession.Complete" class="form-control" id="Complete" placeholder="@Html.DisplayNameFor(model => model.ScheduledSession.Complete)" />
+                <label for="Complete" asp-for="ScheduledSession.Complete"></label>
+                <span asp-validation-for="ScheduledSession.Complete" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <select asp-for="ScheduledSession.Training_Id" class="form-select" placeholder="@Html.DisplayNameFor(model => model.ScheduledSession.Training_Id)" asp-items="Model.ListForTraining_Id"></select>
+                <label asp-for="ScheduledSession.Training_Id"></label>
+                <span asp-validation-for="ScheduledSession.Training_Id" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <select asp-for="ScheduledSession.Customer_Id" class="form-select" placeholder="@Html.DisplayNameFor(model => model.ScheduledSession.Customer_Id)" asp-items="Model.ListForCustomer_Id"></select>
+                <label asp-for="ScheduledSession.Customer_Id"></label>
+                <span asp-validation-for="ScheduledSession.Customer_Id" class="text-danger"></span>
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary">@Model.GeneralViewInfos.SubmitButtonText</button>
+            </div>
+        </form>
+    </div>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
