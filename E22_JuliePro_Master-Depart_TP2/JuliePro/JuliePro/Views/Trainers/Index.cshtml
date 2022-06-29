@@ -28,13 +28,13 @@ ViewData["Title"] = "@Model.GeneralViewInfos.PageTitle";
                 <thead class="text-bg-primary">
                     <tr>
                           <th>
-                              @Html.DisplayNameFor(model => model.Trainers.First().Active)
+                              @Locals["Active"]
                           </th>
                           <th>
                               @Html.DisplayNameFor(model => model.Trainers.First().Email)
                           </th>
                           <th>
-                              @Html.DisplayNameFor(model => model.Trainers.First().FirstName)
+                              @Locals["FirstName"]
                           </th>
                           <th>
                               @Html.DisplayNameFor(model => model.Trainers.First().LastName)
