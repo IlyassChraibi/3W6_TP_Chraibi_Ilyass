@@ -99,15 +99,21 @@ namespace JuliePro.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Upsert(CustomersUpsertVM vm)
         {
-            if(vm.IsCreate)
+                if(vm.IsCreate)
             {
                 ModelState.Remove("Customer.Id");
             }
 
+            var errors = ModelState.Values.SelectMany(v => v.Errors);
             if (ModelState.IsValid)
             {
                 if (vm.IsCreate)
                 {
+                 
+                     vm.Customer.Objectives = new List<Objective>();
+                        vm.Customer.Objectives.Add(vm.objective);
+                   
+
                     _db.Add(vm.Customer);
                 }
                 else

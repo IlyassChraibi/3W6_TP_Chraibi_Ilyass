@@ -16,18 +16,18 @@ namespace JuliePro_Models
         [Display(Name = "FirstName")]
         [Required(ErrorMessage = "FirstNameNotEmptyValidation")]
         [StringLength(25, MinimumLength = 10, ErrorMessage = "FirstNameLengthValidation")]
-        public string FirstName { get; set; }
+        public string? FirstName { get; set; }
 
         [Display(Name = "LastName")]
         [Required(ErrorMessage = "LastNameNotEmptyValidation")]
         [StringLength(25, MinimumLength = 10, ErrorMessage = "LastNameLengthValidation")]
-        public string LastName { get; set; }
+        public string? LastName { get; set; }
 
         [Display(Name = "Email")]
         [Required(ErrorMessage = "EmailNotEmptyValidation")]
         [DataType(DataType.EmailAddress)]
        // [EmailAddress(ErrorMessage = "EmailTypeVerification")]
-        public string Email { get; set; }
+        public string? Email { get; set; }
 
         [Display(Name = "Photo")]
         [StringLength(40, ErrorMessage = "PhotoLengthValidation")]
@@ -42,7 +42,7 @@ namespace JuliePro_Models
         public double? StartWeight { get; set; }
 
         [Display(Name = "MaxScheduledSession")]
-        [Range(100, 400, ErrorMessage = "MaxScheduledSessionRangeValidation")]
+        [Range(1, 8, ErrorMessage = "MaxScheduledSessionRangeValidation")]
         public int MaxScheduledSession { get; set; }
 
         public virtual ICollection<Objective> Objectives { get; set; }

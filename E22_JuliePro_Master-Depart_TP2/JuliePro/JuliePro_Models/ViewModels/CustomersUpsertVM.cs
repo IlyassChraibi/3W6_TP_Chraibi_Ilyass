@@ -31,5 +31,11 @@ namespace JuliePro_Models.ViewModels
         public GeneralViewInfosVM GeneralViewInfos { get; set; }
         public Customer Customer { get; set; }
         public IEnumerable<SelectListItem> ListForTrainer_Id { get; set; }
+
+
+        public Objective objective { get; set; }
+
+
+
     }
 }

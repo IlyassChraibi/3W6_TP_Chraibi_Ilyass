@@ -112,10 +112,17 @@ namespace JuliePro.Controllers
             string webRootPath = _webHostEnvironment.WebRootPath; //Chemin root des images de Trainers
             string upload = webRootPath + "\\" + AppConstants.ImageTrainerPath;
             string filename = Guid.NewGuid().ToString();
-            string extension = Path.GetExtension(files[0].FileName);
-
+            string extension = null; 
+            if (files.Count > 0 )
+            {
+                extension = Path.GetExtension(files[0].FileName);
+            }
+    
             if (ModelState.IsValid)
             {
+              
+               
+               
                 if (vm.IsCreate)
                 {
                                    
