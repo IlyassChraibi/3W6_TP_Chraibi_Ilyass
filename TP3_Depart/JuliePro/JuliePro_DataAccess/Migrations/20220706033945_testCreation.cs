@@ -2,7 +2,7 @@
 
 namespace JuliePro_DataAccess.Migrations
 {
-    public partial class AddNickName : Migration
+    public partial class testCreation : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -12,22 +12,12 @@ namespace JuliePro_DataAccess.Migrations
                 type: "nvarchar(max)",
                 nullable: false,
                 defaultValue: "");
-
-            migrationBuilder.AddColumn<string>(
-                name: "NickName",
-                table: "AspNetUsers",
-                type: "nvarchar(max)",
-                nullable: true);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
                 name: "Discriminator",
-                table: "AspNetUsers");
-
-            migrationBuilder.DropColumn(
-                name: "NickName",
                 table: "AspNetUsers");
         }
     }

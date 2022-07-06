@@ -2,6 +2,7 @@
 using JuliePro_Models;
 using JuliePro_Models.ViewModels;
 using JuliePro_Utility;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -11,6 +12,7 @@ using System.Threading.Tasks;
 
 namespace JuliePro.Controllers
 {
+
     public class TrainersController : Controller
     {
         private readonly ITrainersService _trainersSvc;
@@ -19,13 +21,14 @@ namespace JuliePro.Controllers
         {
             _trainersSvc = trainersSvc;
         }
-
+        [Authorize(Roles = "Admin,Trainer")]
         // GET: Trainers
         public async Task<IActionResult> Index()
         {
             return View(await _trainersSvc.GetIndexVM());
         }
 
+        [Authorize(Roles = "Admin,Trainer")]
         // GET: Trainers/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -37,6 +40,7 @@ namespace JuliePro.Controllers
             return View("Display", await _trainersSvc.GetDisplayVM(ControllerAction.Details, (int)id));
         }
 
+        [Authorize(Roles = "Admin")]
         // GET: Trainers/Upsert/5
         public async Task<IActionResult> Upsert(int? id)
         {    
@@ -48,6 +52,7 @@ namespace JuliePro.Controllers
             return View(await _trainersSvc.GetUpsertVM(id == null ? ControllerAction.Create : ControllerAction.Edit, id));
         }
 
+        [Authorize(Roles = "Admin")]
         // POST: Trainers/Upsert
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -81,7 +86,7 @@ namespace JuliePro.Controllers
 
             return RedirectToAction(nameof(Index));
         }
-
+        [Authorize(Roles = "Admin")]
         // GET: Trainers/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
@@ -92,7 +97,7 @@ namespace JuliePro.Controllers
 
             return View("Display", await _trainersSvc.GetDisplayVM(ControllerAction.Delete, (int)id));
         }
-
+        [Authorize(Roles = "Admin")]
         // POST: Trainers/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]

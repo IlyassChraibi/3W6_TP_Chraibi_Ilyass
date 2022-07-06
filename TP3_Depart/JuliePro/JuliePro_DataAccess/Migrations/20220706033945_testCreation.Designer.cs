@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace JuliePro_DataAccess.Migrations
 {
     [DbContext(typeof(JulieProDbContext))]
-    [Migration("20220705224637_AddNickName")]
-    partial class AddNickName
+    [Migration("20220706033945_testCreation")]
+    partial class testCreation
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -937,9 +937,6 @@ namespace JuliePro_DataAccess.Migrations
             modelBuilder.Entity("JuliePro_Models.ApplicationUser", b =>
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
-
-                    b.Property<string>("NickName")
-                        .HasColumnType("nvarchar(max)");
 
                     b.HasDiscriminator().HasValue("ApplicationUser");
                 });

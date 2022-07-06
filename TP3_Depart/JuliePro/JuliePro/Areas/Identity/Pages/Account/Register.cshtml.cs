@@ -52,10 +52,6 @@ namespace JuliePro.Areas.Identity.Pages.Account
             public string Email { get; set; }
 
             [Required]
-            [Display(Name = "NickName")]
-            public string NickName { get; set; }
-
-            [Required]
             [Display(Name = "PhoneNumber")]
             public string PhoneNumber { get; set; }
 
@@ -83,8 +79,7 @@ namespace JuliePro.Areas.Identity.Pages.Account
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = Input.Email, Email = Input.Email, PhoneNumber = Input.PhoneNumber, 
-                    NickName = Input.NickName };
+                var user = new ApplicationUser { UserName = Input.Email, Email = Input.Email, PhoneNumber = Input.PhoneNumber};
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {

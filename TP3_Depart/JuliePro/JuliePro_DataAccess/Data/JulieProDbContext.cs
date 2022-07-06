@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace JuliePro_DataAccess.Data
 {
-    public class JulieProDbContext : IdentityDbContext
+    public class JulieProDbContext : IdentityDbContext<IdentityUser>
     {
         public JulieProDbContext(DbContextOptions<JulieProDbContext> options) : base(options) { }
 
