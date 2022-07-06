@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JuliePro_Models", "JuliePro
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JuliePro_Utility", "JuliePro_Utility\JuliePro_Utility.csproj", "{C4DA1E79-1EE4-4F1B-A415-2180E3A5D987}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JuliePro_Core", "JuliePro_Core\JuliePro_Core.csproj", "{2832F0A6-8013-46B7-8FE3-65F494EBE704}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JuliePro_Core", "JuliePro_Core\JuliePro_Core.csproj", "{2832F0A6-8013-46B7-8FE3-65F494EBE704}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JuliePro_Test", "JuliePro_Test\JuliePro_Test.csproj", "{C3FE401C-B685-4F76-ADE7-D79C156AF8DD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{2832F0A6-8013-46B7-8FE3-65F494EBE704}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2832F0A6-8013-46B7-8FE3-65F494EBE704}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2832F0A6-8013-46B7-8FE3-65F494EBE704}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3FE401C-B685-4F76-ADE7-D79C156AF8DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3FE401C-B685-4F76-ADE7-D79C156AF8DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3FE401C-B685-4F76-ADE7-D79C156AF8DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3FE401C-B685-4F76-ADE7-D79C156AF8DD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace JuliePro_DataAccess.Data
 {
-    public class JulieProDbContext : DbContext
+    public class JulieProDbContext : IdentityDbContext
     {
         public JulieProDbContext(DbContextOptions<JulieProDbContext> options) : base(options) { }
 
@@ -37,7 +37,7 @@ namespace JuliePro_DataAccess.Data
         public DbSet<CalendarEvent> CalendarEvents { get; set; }
     
 
-
+        public DbSet<ApplicationUser> ApplicationUser { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

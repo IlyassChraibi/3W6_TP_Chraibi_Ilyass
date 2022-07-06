@@ -1,6 +1,7 @@
 using JuliePro_Core;
 using JuliePro_Core.Interfaces;
 using JuliePro_DataAccess.Data;
+using JuliePro_DataAccess.Initializer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -12,6 +13,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
+using MultiBooks_DataAccess.Initializer;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -65,13 +67,17 @@ namespace JuliePro
             options.UseSqlServer(
             Configuration.GetConnectionString("JulieProMaster2")));
 
+            services.AddDefaultIdentity<IdentityUser>()
+               .AddRoles<IdentityRole>()
+               .AddEntityFrameworkStores<JulieProDbContext>();
+
             /* Activer après avoir configurer MSIdentity*/
-           // services.AddScoped<IDbInitializer, DbInitializer>();
+            services.AddScoped<IDbInitializer, DbInitializer>();
 
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IDbInitializer dbInitializer)
         {
             var locOptions = app.ApplicationServices.GetService<IOptions<RequestLocalizationOptions>>();
             app.UseRequestLocalization(locOptions.Value);
@@ -91,9 +97,10 @@ namespace JuliePro
 
             app.UseRouting();
 
-
+            app.UseAuthentication();
             app.UseAuthorization();
 
+            dbInitializer.Initialize();
 
             app.UseEndpoints(endpoints =>
             {

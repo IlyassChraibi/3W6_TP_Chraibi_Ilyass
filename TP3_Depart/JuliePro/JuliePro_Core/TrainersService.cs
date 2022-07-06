@@ -30,6 +30,8 @@ namespace JuliePro_Core
             );
         }
 
+
+
         public async Task<GenericControllerDisplayVM<TrainerForDisplayVM>> GetDisplayVM(ControllerAction action, int id)
         {
             return GetDisplayVM(
@@ -55,6 +57,11 @@ namespace JuliePro_Core
                         trainer,
                         trainer?.Id
             );
+        }
+
+        public async Task<IEnumerable<Trainer>> GetAllActive()
+        {
+            return await _db.Trainers.Where(t => t.Active).ToListAsync();
         }
     }
 }

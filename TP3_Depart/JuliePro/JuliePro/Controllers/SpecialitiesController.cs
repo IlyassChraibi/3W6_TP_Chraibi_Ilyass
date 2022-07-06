@@ -3,10 +3,6 @@ using JuliePro_Models;
 using JuliePro_Models.ViewModels;
 using JuliePro_Utility;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace JuliePro.Controllers
