@@ -26,16 +26,19 @@ namespace JuliePro.Controllers
         private readonly JulieProDbContext _db;
 
         public HomeController(ILogger<HomeController>
-          logger, IStringLocalizer<HomeController> localizer)
+          logger, IStringLocalizer<HomeController> localizer, JulieProDbContext db)
         {
             _logger = logger;
-            
+            _db = db;
         }
 
         public IActionResult Index()
         {
-           
-            return View();
+            var list = _db.CalendarEvents.ToList();
+            var list2= list.OrderBy(c => c.Date).Take(3);
+            IEnumerable<CalendarEvent> listModel = list2;
+
+            return View(listModel);
         }
 
         public IActionResult Privacy()
